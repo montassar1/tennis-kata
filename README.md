@@ -19,7 +19,7 @@ Le projet suit le modèle **Architecture Hexagonale (Ports & Adapters)** :
 
 - **Domaine (core)** : logique métier pure (`TennisGame.java`)
 - **Adapteur ** : contrôleur REST (`TennisController`)
-- **Port ** :  interface (`ScoreBallUseCase`)
+- **Port ** :  interface (`PlayTennisGameUseCase`)
 
 Ce découplage permet une meilleure testabilité, évolutivité et séparation des responsabilités.
 
