@@ -1,6 +1,6 @@
 package adapters.rest.in;
 
-import application.usecase.TennisGameService;
+import application.port.in.PlayTennisGameUseCase;
 import com.example.MainApplication;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ class PointRestControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private TennisGameService tennisGameService;
+    private PlayTennisGameUseCase playTennisGameUseCase;
 
     @Test
     void should_return_400_for_invalid_input() throws Exception {
@@ -36,7 +36,7 @@ class PointRestControllerTest {
         String input = "ABABAA";
         String mockResult = "Player A : 15 / Player B : 0\nPlayer A wins the game";
 
-        when(tennisGameService.playGame(input)).thenReturn(mockResult);
+        when(playTennisGameUseCase.playGame(input)).thenReturn(mockResult);
 
         mockMvc.perform(post("/tennis/play?sequence=" + input))
                 .andExpect(status().isOk())

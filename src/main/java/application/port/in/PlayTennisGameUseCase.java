@@ -1,6 +1,6 @@
 package application.port.in;
 
 
-public interface ScoreBallUseCase {
+public interface PlayTennisGameUseCase {
     String playGame(String input);
 }

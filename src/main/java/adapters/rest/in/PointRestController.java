@@ -1,6 +1,6 @@
 package adapters.rest.in;
 
-import application.usecase.TennisGameService;
+import application.port.in.PlayTennisGameUseCase;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
@@ -11,10 +11,10 @@ public class PointRestController {
 
     private static final Logger logger = LoggerFactory.getLogger(PointRestController.class);
 
-    private final TennisGameService tennisGameService;
+    private final PlayTennisGameUseCase playTennisGameUseCase;
 
-    public PointRestController(TennisGameService tennisGameService) {
-        this.tennisGameService = tennisGameService;
+    public PointRestController(PlayTennisGameUseCase playTennisGameUseCase) {
+        this.playTennisGameUseCase = playTennisGameUseCase;
     }
 
     @PostMapping("/play")
@@ -25,7 +25,7 @@ public class PointRestController {
             return ResponseEntity.badRequest().body(errorMessage);
         }
 
-        String result = tennisGameService.playGame(sequence);
+        String result = playTennisGameUseCase.playGame(sequence);
         return ResponseEntity.ok(result);
     }
 
